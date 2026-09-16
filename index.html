@@ -5,12 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Matt Archer | Websites for North County small businesses</title>
 <meta name="description" content="Simple, mobile-friendly websites for contractors, landscapers, home bakers and other small businesses in San Marcos, Escondido, Vista, Carlsbad and Oceanside.">
-<!--
-  BEFORE PUBLISHING: find and replace these three placeholders
-    PHONE_DISPLAY  e.g. (760) 555-1234
-    PHONE_DIGITS   e.g. 7605551234
-    FORMSPREE_ID   the ID from your Formspree form URL
--->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;700;800&display=swap" rel="stylesheet">
@@ -125,7 +119,7 @@
 <div class="wrap">
   <header class="top">
     <a class="brand" href="#">Matt Archer <span>Web Design</span></a>
-    <a class="btn btn-primary" href="sms:PHONE_DIGITS">Text me</a>
+    <a class="btn btn-primary" href="sms:6197576171">Text me</a>
   </header>
 
   <div class="hero">
@@ -133,7 +127,7 @@
       <h1>Get your business online without the hassle.</h1>
       <p class="lede">I build simple, good-looking websites for contractors, landscapers, home bakers and other small businesses around North County San Diego. You run your business. I handle the site.</p>
       <div class="actions">
-        <a class="btn btn-primary" href="sms:PHONE_DIGITS">Text PHONE_DISPLAY</a>
+        <a class="btn btn-primary" href="sms:6197576171">Text (619) 757-6171</a>
         <a class="btn btn-ghost" href="#contact">Send a message</a>
       </div>
       <p class="note">Local to San Marcos. You'll deal with me directly, not a call center.</p>
@@ -205,10 +199,10 @@
     <div class="direct">
       <h2>Let's talk</h2>
       <p class="intro">Text or call, or send a message and I'll get back to you within a day.</p>
-      <a href="tel:PHONE_DIGITS">PHONE_DISPLAY</a>
+      <a href="tel:6197576171">(619) 757-6171</a>
     </div>
 
-    <form id="contact-form" action="https://formspree.io/f/FORMSPREE_ID" method="POST">
+    <form id="contact-form" action="https://formspree.io/f/mnpnazvg" method="POST">
       <div class="row">
         <div><label for="name">Your name</label><input id="name" name="name" autocomplete="name" required></div>
         <div><label for="phone">Phone</label><input id="phone" name="phone" type="tel" autocomplete="tel" required></div>
@@ -216,6 +210,7 @@
       <div><label for="business">Business name and what you do</label><input id="business" name="business" placeholder="e.g. Rivera Tile, tile and flooring"></div>
       <div><label for="message">Anything else?</label><textarea id="message" name="message" placeholder="Do you have a site already? Photos you want to use?"></textarea></div>
       <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+      <input type="hidden" name="_subject" value="New website inquiry from mattarcherdesign.com">
       <div><button class="btn btn-primary" type="submit">Send message</button></div>
       <p class="status" id="status" role="status"></p>
     </form>
@@ -255,7 +250,7 @@
       status.textContent = "Message sent. I'll get back to you within a day.";
     } catch {
       status.className = 'status err';
-      status.textContent = 'Message not sent. Please text or call PHONE_DISPLAY instead.';
+      status.textContent = 'Message not sent. Please text or call (619) 757-6171 instead.';
     }
   });
 </script>
