@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Matt Archer | Websites for North County small businesses</title>
+<meta name="description" content="Simple, mobile-friendly websites for contractors, landscapers, home bakers and other small businesses in San Marcos, Escondido, Vista, Carlsbad and Oceanside.">
+<!--
+  BEFORE PUBLISHING: find and replace these three placeholders
+    PHONE_DISPLAY  e.g. (760) 555-1234
+    PHONE_DIGITS   e.g. 7605551234
+    FORMSPREE_ID   the ID from your Formspree form URL
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1c2321;
+    --pine:#1f4d3a;
+    --pine-dark:#163a2b;
+    --sage:#e6eee8;
+    --paper:#fbfbf9;
+    --marigold:#e8a317;
+    --muted:#55605b;
+    --line:#cfdad3;
+    --font:"Schibsted Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font);font-size:18px;line-height:1.55}
+  a{color:var(--pine)}
+  :focus-visible{outline:3px solid var(--marigold);outline-offset:3px;border-radius:4px}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 24px}
+
+  /* Header */
+  .top{display:flex;justify-content:space-between;align-items:center;padding:20px 0}
+  .brand{font-weight:800;font-size:20px;text-decoration:none;color:var(--ink)}
+  .brand span{font-weight:400;color:var(--muted)}
+  .btn{display:inline-block;font:inherit;font-weight:700;text-decoration:none;border:0;cursor:pointer;
+       padding:14px 22px;border-radius:999px;line-height:1.2}
+  .btn-primary{background:var(--marigold);color:var(--ink)}
+  .btn-primary:hover{background:#f0b536}
+  .btn-ghost{background:transparent;color:var(--pine);box-shadow:inset 0 0 0 2px var(--pine)}
+  .btn-ghost:hover{background:var(--sage)}
+  .top .btn{padding:10px 18px;font-size:16px}
+
+  /* Hero */
+  .hero{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center;padding:40px 0 72px}
+  h1{font-size:clamp(40px,6vw,68px);line-height:1.02;letter-spacing:-.025em;margin:0 0 24px;font-weight:800}
+  .lede{font-size:21px;color:var(--muted);max-width:32em;margin:0 0 32px}
+  .actions{display:flex;flex-wrap:wrap;gap:12px}
+  .note{margin-top:20px;font-size:15px;color:var(--muted)}
+
+  /* Phone showcase */
+  .showcase{justify-self:center;text-align:center}
+  .phone{--w:300px;--scale:.77;width:var(--w);height:600px;background:var(--ink);border-radius:44px;padding:12px;
+         box-shadow:0 30px 60px -20px rgba(31,77,58,.45)}
+  .screen{width:100%;height:100%;border-radius:32px;overflow:hidden;background:#fff;position:relative}
+  .screen iframe{width:calc(100% / var(--scale));height:calc(100% / var(--scale));border:0;
+                 transform:scale(var(--scale));transform-origin:0 0;pointer-events:none}
+  .tabs{display:inline-flex;gap:4px;margin-top:20px;background:var(--sage);padding:4px;border-radius:999px}
+  .tabs button{font:inherit;font-size:15px;font-weight:500;border:0;background:transparent;color:var(--pine);
+               padding:8px 14px;border-radius:999px;cursor:pointer}
+  .tabs button[aria-pressed="true"]{background:var(--pine);color:#fff}
+  .showcase .open{display:block;margin-top:10px;font-size:15px}
+
+  /* Sections */
+  section{padding:72px 0;border-top:1px solid var(--line)}
+  h2{font-size:clamp(28px,3.6vw,40px);letter-spacing:-.015em;line-height:1.1;margin:0 0 16px}
+  .intro{color:var(--muted);max-width:36em;margin:0 0 40px}
+
+  .included{display:grid;grid-template-columns:repeat(2,1fr);gap:28px 56px;margin:0}
+  .included div{border-left:4px solid var(--marigold);padding-left:18px}
+  .included dt{font-weight:700;margin-bottom:4px}
+  .included dd{margin:0;color:var(--muted)}
+
+  .steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:40px;counter-reset:s}
+  .steps li{counter-increment:s}
+  .steps li::before{content:counter(s);display:block;font-size:64px;font-weight:800;line-height:1;color:var(--pine);margin-bottom:12px}
+  .steps h3{margin:0 0 6px;font-size:21px}
+  .steps p{margin:0;color:var(--muted)}
+
+  .band{background:var(--pine);color:#fff;border-top:0}
+  .band .intro{color:#cfe0d6}
+  .band-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+  .towns{list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:10px}
+  .towns li{background:var(--pine-dark);padding:8px 16px;border-radius:999px;font-weight:500}
+  .price p{margin:0 0 12px;color:#e3ece6}
+  .price strong{color:#fff}
+
+  /* Contact */
+  .contact{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px}
+  .direct a{font-size:28px;font-weight:800;text-decoration:none;display:inline-block;margin-bottom:8px}
+  form{display:grid;gap:16px}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  label{display:block;font-weight:500;font-size:15px;margin-bottom:6px}
+  input,textarea{width:100%;font:inherit;font-size:17px;padding:12px 14px;border:2px solid var(--line);
+                 border-radius:10px;background:#fff;color:var(--ink)}
+  input:focus,textarea:focus{border-color:var(--pine);outline:none}
+  textarea{min-height:120px;resize:vertical}
+  .status{font-weight:500;margin:0;min-height:1.5em}
+  .status.ok{color:var(--pine)}
+  .status.err{color:#a3321c}
+
+  footer{border-top:1px solid var(--line);padding:28px 0 40px;font-size:15px;color:var(--muted)}
+
+  @media (max-width:860px){
+    .hero,.band-grid,.contact{grid-template-columns:1fr}
+    .hero{gap:40px;padding-top:16px}
+    .steps{grid-template-columns:1fr;gap:28px}
+    .included{grid-template-columns:1fr}
+  }
+  @media (max-width:520px){
+    body{font-size:17px}
+    .row{grid-template-columns:1fr}
+    .phone{--w:270px;--scale:.69;height:540px}
+    .top .btn{display:none}
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="top">
+    <a class="brand" href="#">Matt Archer <span>Web Design</span></a>
+    <a class="btn btn-primary" href="sms:PHONE_DIGITS">Text me</a>
+  </header>
+
+  <div class="hero">
+    <div>
+      <h1>Get your business online without the hassle.</h1>
+      <p class="lede">I build simple, good-looking websites for contractors, landscapers, home bakers and other small businesses around North County San Diego. You run your business. I handle the site.</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="sms:PHONE_DIGITS">Text PHONE_DISPLAY</a>
+        <a class="btn btn-ghost" href="#contact">Send a message</a>
+      </div>
+      <p class="note">Local to San Marcos. You'll deal with me directly, not a call center.</p>
+    </div>
+
+    <div class="showcase">
+      <div class="phone">
+        <div class="screen">
+          <iframe id="preview" title="Sample site preview"
+                  src="https://m5877archer-glitch.github.io/demo-concrete/"
+                  loading="lazy" tabindex="-1"></iframe>
+        </div>
+      </div>
+      <div class="tabs" role="group" aria-label="Choose a sample site">
+        <button type="button" aria-pressed="true" data-src="https://m5877archer-glitch.github.io/demo-concrete/">Concrete company</button>
+        <button type="button" aria-pressed="false" data-src="https://m5877archer-glitch.github.io/brenda-bakery/">Home bakery</button>
+      </div>
+      <a class="open" id="open-link" href="https://m5877archer-glitch.github.io/demo-concrete/" target="_blank" rel="noopener">Open this sample site</a>
+    </div>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <h2>What you get</h2>
+    <p class="intro">Everything a customer needs to find you, trust you, and get in touch.</p>
+    <dl class="included">
+      <div><dt>A site that works on phones</dt><dd>Most of your customers will find you on their phone, so that's where it's built to look best.</dd></div>
+      <div><dt>Your services and your photos</dt><dd>What you do, where you work, and pictures of real jobs or real food.</dd></div>
+      <div><dt>A contact form and tap-to-call</dt><dd>Messages come straight to your email. Customers can call or text with one tap.</dd></div>
+      <div><dt>Google Business Profile setup</dt><dd>So you show up on Google Maps and in "near me" searches, with your hours and reviews.</dd></div>
+      <div><dt>Your own web address</dt><dd>A domain like yourbusiness.com, registered and renewed for you.</dd></div>
+      <div><dt>Changes when you need them</dt><dd>New photos, new prices, holiday hours. Text me and it's done.</dd></div>
+    </dl>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>How it works</h2>
+    <p class="intro">Most sites are live within a week.</p>
+    <ol class="steps">
+      <li><h3>Quick chat</h3><p>A 15-minute call or a few texts about your business, your area, and what you want customers to do.</p></li>
+      <li><h3>I build a draft</h3><p>You see a working version of your site before you pay for anything beyond a small deposit.</p></li>
+      <li><h3>Go live</h3><p>Once you're happy, it goes up on your domain and your Google profile gets linked.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap band-grid">
+    <div>
+      <h2>Serving North County</h2>
+      <p class="intro">Based in San Marcos. Happy to meet in person anywhere nearby.</p>
+      <ul class="towns">
+        <li>San Marcos</li><li>Escondido</li><li>Vista</li><li>Carlsbad</li><li>Oceanside</li>
+      </ul>
+    </div>
+    <div class="price">
+      <h2>Straightforward pricing</h2>
+      <p><strong>A one-time setup fee plus a small monthly fee</strong> that covers hosting, your domain, updates and your Google profile.</p>
+      <p>You get a flat quote before any work starts. No contracts, cancel anytime.</p>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap contact">
+    <div class="direct">
+      <h2>Let's talk</h2>
+      <p class="intro">Text or call, or send a message and I'll get back to you within a day.</p>
+      <a href="tel:PHONE_DIGITS">PHONE_DISPLAY</a>
+    </div>
+
+    <form id="contact-form" action="https://formspree.io/f/FORMSPREE_ID" method="POST">
+      <div class="row">
+        <div><label for="name">Your name</label><input id="name" name="name" autocomplete="name" required></div>
+        <div><label for="phone">Phone</label><input id="phone" name="phone" type="tel" autocomplete="tel" required></div>
+      </div>
+      <div><label for="business">Business name and what you do</label><input id="business" name="business" placeholder="e.g. Rivera Tile, tile and flooring"></div>
+      <div><label for="message">Anything else?</label><textarea id="message" name="message" placeholder="Do you have a site already? Photos you want to use?"></textarea></div>
+      <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+      <div><button class="btn btn-primary" type="submit">Send message</button></div>
+      <p class="status" id="status" role="status"></p>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">Matt Archer Web Design, San Marcos, CA</div>
+</footer>
+
+<script>
+  // Sample site switcher
+  const frame = document.getElementById('preview');
+  const openLink = document.getElementById('open-link');
+  document.querySelectorAll('.tabs button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tabs button').forEach(b => b.setAttribute('aria-pressed', b === btn));
+      frame.src = btn.dataset.src;
+      openLink.href = btn.dataset.src;
+    });
+  });
+
+  // Contact form: send without leaving the page
+  const form = document.getElementById('contact-form');
+  const status = document.getElementById('status');
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    status.className = 'status';
+    status.textContent = 'Sending...';
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' }
+      });
+      if (!res.ok) throw new Error();
+      form.reset();
+      status.className = 'status ok';
+      status.textContent = "Message sent. I'll get back to you within a day.";
+    } catch {
+      status.className = 'status err';
+      status.textContent = 'Message not sent. Please text or call PHONE_DISPLAY instead.';
+    }
+  });
+</script>
+</body>
+</html>
